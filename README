@@ -1,0 +1,14 @@
+# compile
+g++ -c lib.cpp
+
+# archive
+ar -cvq lib.a lib.o
+
+# static
+mkdir bin
+g++ main.cpp lib.a -o ./bin/hello
+
+
+
+http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html
+https://www.youtube.com/watch?v=Jzh4ZULXsvo
