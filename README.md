@@ -1,5 +1,7 @@
 # CPP Lib compile
 
+Static and dynamic C/C++ compilation.
+
 ## Build commands
 
 ### Static
