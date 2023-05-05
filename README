@@ -50,9 +50,26 @@ gcc main.cpp -L. -lhello -o main
 #########
 
 
-gcc -fPIC -c -Wall -Werror hello.cpp
-gcc -shared -o libhello.so hello.o
+gcc -fPIC -c -Wall -Werror shared.cpp
+gcc -shared -o lib.so shared.o
 gcc -L. -Wall -o main main.cpp -lhello
+
+
+
+#### THIS GOES ####
+
+gcc -fPIC -c shared.cpp
+gcc -shared -o libshared.so shared.o
+gcc main.cpp ./libshared.so -Wl,-rpath . -o main
+
+gcc main.cpp -L . -lshared-Wl,-rpath . -o main
+
+
+################ 
+
+g++ -c -Wall -Werror -fPIC shared.cpp
+g++ -shared -o libshared.so shared.o
+g++ -L. -Wall -Wextra -Werror main.cpp -o main -lshared
 
 
 
