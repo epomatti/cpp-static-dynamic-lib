@@ -32,10 +32,27 @@ gcc -L$PWD -Wall -o test main.cpp -lfoo
 
 ########################
 
-gcc -c -Wall -Werror -fpic lib.cpp
+gcc -c -Wall -Werror -fPIC hello.cpp
+gcc -shared -o libhello.so hello.o
+gcc -L. -Wall -o app app.cpp -lhell
+
+
+########################
+
+export LD_LIBRARY_PATH=.
+
+gcc -fPIC -c -Wall -Werror hello.cpp
+gcc -fPIC -shared hello.o -o libhello.so
+gcc main.cpp -L. -lhello -o main
 
 
 
+#########
+
+
+gcc -fPIC -c -Wall -Werror hello.cpp
+gcc -shared -o libhello.so hello.o
+gcc -L. -Wall -o main main.cpp -lhello
 
 
 
