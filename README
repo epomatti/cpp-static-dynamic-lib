@@ -10,5 +10,35 @@ g++ main.cpp lib.a -o ./bin/hello
 
 
 
+############################################
+
+g++ -Wall -fPIC -c lib.cpp
+
+mkdir lib
+g++ -shared -Wl,-soname,hello.so.1 -o lib/hello.so.1.0 lib.o
+
+
+ln -sf lib/hello.so.1.0 lib/hello.so.1
+ln -sf lib/hello.so.1.0 lib/hello.so
+
+gcc -Llib/hello.so -Wall -o main -l123
+
+gcc -Wall -L./lib main.cpp -lctest -o hello
+
+
+gcc -Wall -o test main.cpp -llib
+
+gcc -L$PWD -Wall -o test main.cpp -lfoo
+
+########################
+
+gcc -c -Wall -Werror -fpic lib.cpp
+
+
+
+
+
+
 http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html
 https://www.youtube.com/watch?v=Jzh4ZULXsvo
+https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
